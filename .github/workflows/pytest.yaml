@@ -25,5 +25,12 @@ jobs:
       - name: Run pytest
         run: pytest
 
+      - name: Failure log
+        if: failure()
+        run: echo "The pytest failed"
+
       - name: Print DB_USER
         run: echo "DB_USER -> ${DB_USER}"
+
+      - name: Print secrets
+        run: echo "MY_API_KEY -> ${{ secrets.MY_API_KEY }}"
